@@ -22,6 +22,7 @@ public class HibernateConfig {
 		prop.put(Environment.JAKARTA_JDBC_PASSWORD, "root");
 		prop.put(Environment.HBM2DDL_AUTO,"create");
 		prop.put(Environment.SHOW_SQL, "true");
+		prop.put(Environment.FORMAT_SQL, "true");
 		
 		
 		
