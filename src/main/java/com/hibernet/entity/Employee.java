@@ -1,17 +1,7 @@
 package com.hibernet.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity(name="empName")
 public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="empName")
 private String name;
 	private String gender;
 private int salary;
