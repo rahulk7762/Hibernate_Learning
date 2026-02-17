@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.hibernet.configuratgion.HibernateConfig;
+import com.hibernet.entity.Address;
 import com.hibernet.entity.Employee;
 
 
@@ -12,8 +13,15 @@ import com.hibernet.entity.Employee;
 public class Main {
 
     public static void main(String[] args) {
-
- Employee e = new Employee("Sandeep kumar", "male", 222255);
+Address add1 = new Address();
+add1.setCity("Noida");
+add1.setState("Uttarpradesh");
+    	
+ Employee e = new Employee();
+ e.setName("Rahul");
+ e.setGender("male");
+ e.setSalary(30000);
+ e.setAddress(add1);
  
  SessionFactory sf = HibernateConfig.sessionFactory();
 	
@@ -29,8 +37,9 @@ public class Main {
 	
 	
 	
-//	session.persist(e);
-//	tx.commit();
+	session.persist(e);
+	session.persist(add1);
+	tx.commit();
  
     }
 }

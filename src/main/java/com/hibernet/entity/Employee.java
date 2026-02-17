@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity(name="myemp")
 public class Employee {
@@ -16,18 +17,30 @@ private String name;
 	private String gender;
 private int salary;
 
+@OneToOne
+Address address;
+
 public Employee() {
 	super();
 }
 
-public Employee(String name,String gender,int salary) {
+public Employee(String name,String gender,int salary,Address adress) {
 	super();
 	this.name = name;
 	this.gender = gender;
 	this.salary = salary;
+	this.address = address;
 }
 
 
+
+public Address getAddress() {
+	return address;
+}
+
+public void setAddress(Address address) {
+	this.address = address;
+}
 
 public int getId() {
 	return id;
@@ -61,7 +74,8 @@ public int getSalary() {
 
 @Override
 public String toString() {
-	return "Employee [name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+	return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
+			+ address + "]";
 }
 
 
