@@ -50,9 +50,9 @@ listOfAddresses.add(add3);
 	Session session = sf.openSession();
 	Transaction tx = session.beginTransaction();
 	session.persist(e);
-	session.persist(add1);
-	session.persist(add2);
-	session.persist(add3);
+//	session.persist(add1);
+//	session.persist(add2);
+//	session.persist(add3);
 	tx.commit();
 
 	
