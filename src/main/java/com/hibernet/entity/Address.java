@@ -15,7 +15,7 @@ public class Address {
 	private String state;
 	
 	
-	@OneToOne(mappedBy = "address")
+	@OneToOne
 	private Employee emp;
 	
 	public Address() {

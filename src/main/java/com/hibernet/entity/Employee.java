@@ -1,13 +1,15 @@
 package com.hibernet.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
-@Entity(name="myemp")
+@Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,29 +19,33 @@ private String name;
 	private String gender;
 private int salary;
 
-@OneToOne
-Address address;
+@OneToMany
+private List<Address> addresses;
 
 public Employee() {
 	super();
 }
 
-public Employee(String name,String gender,int salary,Address adress) {
+public Employee(int id, String name, String gender, int salary, List<Address> addresses) {
 	super();
+	this.id = id;
 	this.name = name;
 	this.gender = gender;
 	this.salary = salary;
-	this.address = address;
+	this.addresses = addresses;
 }
 
 
 
-public Address getAddress() {
-	return address;
+
+
+
+public List<Address> getAddress() {
+	return addresses;
 }
 
-public void setAddress(Address address) {
-	this.address = address;
+public void setAddress(List<Address> addresses) {
+	this.addresses = addresses;
 }
 
 public int getId() {

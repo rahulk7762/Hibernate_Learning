@@ -1,5 +1,7 @@
 package com.hibernet.main;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,15 +19,31 @@ Address add1 = new Address();
 add1.setCity("Noida");
 add1.setState("Uttarpradesh");
 
+
+Address add2 = new Address();
+add2.setCity("GHZ");
+add2.setState("Uttarpradesh");
+
+
+Address add3 = new Address();
+add3.setCity("LuckNow");
+add3.setState("Uttarpradesh");
     	
+
+ArrayList<Address> listOfAddresses = new ArrayList<>();
+
+listOfAddresses.add(add1);
+listOfAddresses.add(add2);
+listOfAddresses.add(add3);
+
  Employee e = new Employee();
  e.setName("Rahul");
  e.setGender("male");
  e.setSalary(30000);
- e.setAddress(add1);
+ e.setAddress(listOfAddresses);
  
  
- add1.setEmp(e);
+// add1.setEmp(e);
  
  SessionFactory sf = HibernateConfig.sessionFactory();
 	
@@ -33,18 +51,15 @@ add1.setState("Uttarpradesh");
 	Transaction tx = session.beginTransaction();
 	session.persist(e);
 	session.persist(add1);
+	session.persist(add2);
+	session.persist(add3);
 	tx.commit();
 
 	
-	Employee employee = session.find(Employee.class,1);
-	System.out.println(employee);
-	System.out.println(employee.getAddress());
-	
-	Address ad = new Address();
-	session.load(ad, 1);
-	System.out.println(ad);
-	System.out.println(ad.getEmp());
- 
+	Employee e1 = session.find(Employee.class,1);
+System.out.println(e1);
+System.out.println(e1.getAddress());
+			
     }
 }
 
