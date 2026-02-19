@@ -50,6 +50,8 @@ listOfAddresses.add(add3);
 	Session session = sf.openSession();
 	Transaction tx = session.beginTransaction();
 	session.persist(e);
+	
+	//we don't need to persist here bczf cascading
 //	session.persist(add1);
 //	session.persist(add2);
 //	session.persist(add3);
