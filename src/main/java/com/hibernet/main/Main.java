@@ -30,20 +30,30 @@ add3.setCity("LuckNow");
 add3.setState("Uttarpradesh");
     	
 
-ArrayList<Address> listOfAddresses = new ArrayList<>();
-
-listOfAddresses.add(add1);
-listOfAddresses.add(add2);
-listOfAddresses.add(add3);
-
  Employee e = new Employee();
  e.setName("Rahul");
  e.setGender("male");
  e.setSalary(30000);
+ 
+ 
+
+ 
+ 
+ ArrayList<Address> listOfAddresses = new ArrayList<>();
+
+ listOfAddresses.add(add1);
+ listOfAddresses.add(add2);
+ listOfAddresses.add(add3);
+ 
+
+
+ 
  e.setAddress(listOfAddresses);
  
  
-// add1.setEmp(e);
+ add1.setEmployee(e);
+ add2.setEmployee(e);
+ add3.setEmployee(e);
  
  SessionFactory sf = HibernateConfig.sessionFactory();
 	
@@ -56,9 +66,15 @@ listOfAddresses.add(add3);
 	tx.commit();
 
 	
-	Employee e1 = session.find(Employee.class,1);
-System.out.println(e1);
-System.out.println(e1.getAddress());
+Employee emp = session.find(Employee.class,1);
+System.out.println(emp);
+System.out.println(emp.getAddress());
+
+
+
+Address add = session.find(Address.class,1);
+System.out.println(add);
+System.out.println(add.getEmployee());
 			
     }
 }

@@ -2,6 +2,7 @@ package com.hibernet.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ private String name;
 	private String gender;
 private int salary;
 
-@OneToMany
+@OneToMany(cascade = CascadeType.ALL , mappedBy = "employee")
 private List<Address> addresses;
 
 public Employee() {
