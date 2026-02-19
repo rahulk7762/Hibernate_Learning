@@ -32,18 +32,18 @@ add1.setState("Uttarpradesh");
 	Session session = sf.openSession();
 	Transaction tx = session.beginTransaction();
 	
-	
-
-	
-
-
-
-	
-	
-	
 	session.persist(e);
 	session.persist(add1);
 	tx.commit();
+	
+	
+	Employee employee = session.find(Employee.class,1);
+	System.out.println(employee);
+	System.out.println(employee.getAddress());
+	
+	Address ad = session.find(Address.class, 1);
+	System.out.println(ad);
+	System.out.println(ad.getEmp());
  
     }
 }
