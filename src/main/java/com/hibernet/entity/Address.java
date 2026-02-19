@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -14,16 +15,33 @@ public class Address {
 	private String state;
 	
 	
+	@OneToOne
+	private Employee emp;
+	
 	public Address() {
 		super();
 	}
 	
-	public Address(String city,String state) {
+	
+	public Address(int id, String city, String state, Employee emp) {
 		super();
+		this.id = id;
 		this.city = city;
 		this.state = state;
+		this.emp = emp;
 	}
-	
+
+
+	public Employee getEmp() {
+		return emp;
+	}
+
+
+	public void setEmp(Employee emp) {
+		this.emp = emp;
+	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -48,11 +66,13 @@ public class Address {
 		return state;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", city=" + city + ", state=" + state + "]";
+		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", emp=" + emp + "]";
 	}
-	
+
+
 	
 	
 }

@@ -16,12 +16,16 @@ public class Main {
 Address add1 = new Address();
 add1.setCity("Noida");
 add1.setState("Uttarpradesh");
+
     	
  Employee e = new Employee();
  e.setName("Rahul");
  e.setGender("male");
  e.setSalary(30000);
  e.setAddress(add1);
+ 
+ 
+ add1.setEmp(e);
  
  SessionFactory sf = HibernateConfig.sessionFactory();
 	
