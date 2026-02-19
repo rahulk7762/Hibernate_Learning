@@ -40,7 +40,8 @@ add1.setState("Uttarpradesh");
 	System.out.println(employee);
 	System.out.println(employee.getAddress());
 	
-	Address ad = session.find(Address.class, 1);
+	Address ad = new Address();
+	session.load(ad, 1);
 	System.out.println(ad);
 	System.out.println(ad.getEmp());
  
