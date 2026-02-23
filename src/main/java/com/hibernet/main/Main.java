@@ -49,25 +49,20 @@ public class Main {
         List<Address> addressList1 = new ArrayList<>();
         addressList1.add(add1);
         addressList1.add(add2);
+        addressList1.add(add3);
 
-        List<Address> addressList2 = new ArrayList<>();
-        addressList2.add(add2);
-        addressList2.add(add3);
-
+      
         e1.setAddresses(addressList1);
-        e2.setAddresses(addressList2);
+   
 
         // Setting reverse side
 
         List<Employee> empList1 = new ArrayList<>();
         empList1.add(e1);
-
-        List<Employee> empList2 = new ArrayList<>();
-        empList2.add(e1);
-        empList2.add(e2);
+        empList1.add(e2);
+       
 
         add1.setEmployees(empList1);
-        add2.setEmployees(empList2);
 
         // Hibernate Code
         SessionFactory sf = HibernateConfig.sessionFactory();
@@ -77,9 +72,16 @@ public class Main {
         session.persist(e1);
         session.persist(e2);
         session.persist(e3);
-
         tx.commit();
+        
+        Employee emp = session.find(Employee.class, 1);
+        System.out.println(emp);
+        System.out.println(emp.getAddresses());
+        
+        Address add = session.find(Address.class,1);
+        System.err.println(add);
+        
+      
         session.close();
-        sf.close();
     }
 }
