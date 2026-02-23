@@ -8,85 +8,90 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name="empName")
-private String name;
-	private String gender;
-private int salary;
 
-@OneToMany(cascade = CascadeType.ALL , mappedBy = "employee")
-private List<Address> addresses;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-public Employee() {
-	super();
-}
+    @Column(name="empName")
+    private String name;
 
-public Employee(int id, String name, String gender, int salary, List<Address> addresses) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.gender = gender;
-	this.salary = salary;
-	this.addresses = addresses;
-}
+    private String gender;
+    private int salary;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "emp_address",
+        joinColumns = @JoinColumn(name = "emp_id"),
+        inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private List<Address> addresses;
 
+    public Employee() {
+    	
+    }
+    
+    public Employee(int id, String name, String gender, int salary, List<Address> addresses) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.salary = salary;
+        this.addresses = addresses;
+    }
 
+    // getters and setters
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
 
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
 
-public List<Address> getAddress() {
-	return addresses;
-}
+	public int getId() {
+		return id;
+	}
 
-public void setAddress(List<Address> addresses) {
-	this.addresses = addresses;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public int getId() {
-	return id;
-}
+	public String getName() {
+		return name;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
-public String getName() {
-	return name;
-}
-	
-public void setGender(String gender) {
-	this.gender = gender;
-}
-public String getGender() {
-	return gender;
-}
+	public String getGender() {
+		return gender;
+	}
 
-public void setSalary(int salary) {
-	this.salary = salary;
-}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-public int getSalary() {
-	return salary;
-}
+	public int getSalary() {
+		return salary;
+	}
 
-@Override
-public String toString() {
-	return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
-}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", addresses="
+				+ addresses + "]";
+	}
 
-
-
-
-
+    
 }
