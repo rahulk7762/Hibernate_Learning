@@ -53,7 +53,8 @@ public class Main {
 
       
         e1.setAddresses(addressList1);
-   
+        e2.setAddresses(addressList1);
+        e3.setAddresses(addressList1);
 
         // Setting reverse side
 
@@ -63,6 +64,8 @@ public class Main {
        
 
         add1.setEmployees(empList1);
+        add2.setEmployees(empList1);
+        add3.setEmployees(empList1);
 
         // Hibernate Code
         SessionFactory sf = HibernateConfig.sessionFactory();
@@ -79,7 +82,8 @@ public class Main {
         System.out.println(emp.getAddresses());
         
         Address add = session.find(Address.class,1);
-        System.err.println(add);
+        System.out.println(add);
+       System.out.println(add.getEmployees());
         
       
         session.close();
